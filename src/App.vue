@@ -1,0 +1,86 @@
+<template>
+    <div id="app">
+        <el-container>
+            <Aside v-show="isRequiresAuth()"></Aside>
+            <el-container direction="vertical">
+                <Header v-show="isRequiresAuth()"></Header>
+                <el-main>
+                    <keep-alive>
+                        <router-view v-if="$route.meta.isKeepAlive"></router-view>
+                    </keep-alive>
+                    <router-view v-if="!$route.meta.isKeepAlive"></router-view>
+                </el-main>
+                <Footer v-show="isRequiresAuth()"></Footer>
+            </el-container>
+        </el-container>
+    </div>
+</template>
+
+<script>
+import './assets/css/base.css'
+import './assets/css/elementui.css'
+import './assets/css/app.css'
+import Header from "./components/header";
+import Aside from "./components/aside";
+import Footer from "./components/footer";
+import { setLanguage, setLocale } from "./i18";
+
+export default {
+    name: "App",
+    components: {
+        Header,
+        Aside,
+        Footer,
+    },
+    data() {
+        return {
+
+        };
+    },
+    methods: {
+        isRequiresAuth() {
+            let requiresAuth = this.$route.meta.requiresAuth;
+            return requiresAuth == undefined || requiresAuth;
+        },
+        // 刷新语言资源
+        refreshLang(newVal) {
+            setLanguage(newVal);
+            location.reload(true)
+        },
+        // 重新加载语言类型
+        async reloadLangOptions() {
+            // 可设置为远程加载
+            const response = await this.$API.GET('/api/getLocale');
+            if (response.succees) {
+                setLocale(response.data);
+            }
+        },
+        setActiveRouteKey(key) {
+            // 设置激活的路由
+            this.$store.dispatch('menu/setActiveRouteKey', key)
+            // 跳转
+            this.$router.push({ name: key });
+        },
+        reloadRoute(){
+            // 临时解决，route name === path 的最后一个
+            let pathname = location.pathname;
+            let path = pathname.split('/');
+            let routeName = path[path.length-1];
+            if (routeName){
+                // FIXME 未成功跳转
+                this.setActiveRouteKey(routeName);
+            }
+        }
+    },
+    /**
+     * App作为Root组件，用于初始化一些全局的配置
+     */
+    mounted() {
+        this.reloadLangOptions();
+        // 监听refreshLang事件
+        this.$bus.$on('refreshLang', this.refreshLang)
+        this.$bus.$on('setActiveRouteKey', this.setActiveRouteKey)
+        this.reloadRoute();
+    }
+};
+</script>

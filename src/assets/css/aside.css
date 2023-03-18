@@ -1,0 +1,13 @@
+.el-aside {
+    width: 240px !important;
+    overflow-y: hidden !important;
+    text-align: left !important;
+}
+
+.aside-title,
+.aside-title>a {
+    background-color: #3c77d5;
+    color: hsla(0, 0%, 100%, .75);
+    text-align: center;
+    font-size: 1.25rem;
+}

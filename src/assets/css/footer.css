@@ -1,0 +1,12 @@
+.el-footer>span {
+    color: #909399;
+}
+
+.el-footer a {
+    color: #909399;
+    margin-right: 4px;
+}
+
+.el-footer>a:hover {
+    color: #555d65;
+}
