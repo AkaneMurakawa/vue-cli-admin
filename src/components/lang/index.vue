@@ -1,6 +1,6 @@
 <template>
     <el-select v-model="language" size="small" placeholder="选择语言">
-        <el-option :selected="item.value == language" :label="item.label" :value="item.value" v-for="item in options"
+        <el-option :selected="item.value == language" :label="item.label" :value="item.value" v-for="item in locale"
             :key="item.value"></el-option>
     </el-select>
 </template>
@@ -13,7 +13,7 @@ export default {
         return {
             isRefreshing: false,
             language: getLanguage(),
-            options: getLocale(),
+            locale: getLocale(),
         }
     },
     watch: {
@@ -23,6 +23,14 @@ export default {
                 this.$bus.$emit('refreshLang', newVal);
             }
         }
+    },
+    methods:{
+        reloadLocale(){
+            this.locale = getLocale();
+        }
+    },
+    mounted(){
+        this.$bus.$on('reloadLocale', this.reloadLocale);
     }
 }
 </script>

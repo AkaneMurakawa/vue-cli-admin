@@ -48,11 +48,12 @@ export default {
             location.reload(true)
         },
         // 重新加载语言类型
-        async reloadLangOptions() {
+        async refreshLocale() {
             // 可设置为远程加载
             const response = await this.$API.GET('/api/getLocale');
-            if (response.succees) {
+            if (response.success) {
                 setLocale(response.data);
+                this.$bus.$emit('reloadLocale');
             }
         },
         setActiveRouteKey(key) {
@@ -76,10 +77,10 @@ export default {
      * App作为Root组件，用于初始化一些全局的配置
      */
     mounted() {
-        this.reloadLangOptions();
+        this.refreshLocale();
         // 监听refreshLang事件
-        this.$bus.$on('refreshLang', this.refreshLang)
-        this.$bus.$on('setActiveRouteKey', this.setActiveRouteKey)
+        this.$bus.$on('refreshLang', this.refreshLang);
+        this.$bus.$on('setActiveRouteKey', this.setActiveRouteKey);
         this.reloadRoute();
     }
 };

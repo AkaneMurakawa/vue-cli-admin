@@ -12,7 +12,8 @@ const lang = getLanguage();
 
 // 语言类型
 export function getLocale() {
-    return JSON.parse(localStorage.getItem(LOCALE));
+    const locale = localStorage.getItem(LOCALE);
+    return locale && JSON.parse(locale);
 }
 
 export function setLocale(locale) {
