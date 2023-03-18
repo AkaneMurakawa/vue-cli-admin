@@ -8,8 +8,8 @@ import {
     Header,
     Main,
     Aside,
-    Footer,
     Row,
+    Footer,
     Col,
     Input,
     Button,
@@ -36,6 +36,7 @@ import {
     Tree,
     Dialog,
     Card,
+    InputNumber,
 } from 'element-ui';
 
 // 按需引用
@@ -80,3 +81,4 @@ Vue.use(Pagination)
 Vue.use(Tree)
 Vue.use(Dialog)
 Vue.use(Card)
+Vue.use(InputNumber)
