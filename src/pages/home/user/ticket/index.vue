@@ -38,7 +38,7 @@ export default {
             this.tableData = this.list();
         },
         handleReset() {
-            this.eform = {...this.form};
+            this.eform = { ...this.form };
         },
         list() {
             return [{
@@ -73,13 +73,13 @@ export default {
                 createTime: undefined,
                 create: undefined,
             },
-            eform:{},
+            eform: {},
             // search table options
             options
         }
     },
     mounted() {
-        this.eform = {...this.form}
+        this.eform = { ...this.form }
         // this.tableData = this.list();
     }
 };

@@ -8,5 +8,5 @@
 }
 
 .el-footer>a:hover {
-    color: #555d65;
+    color: var(--main-color);
 }

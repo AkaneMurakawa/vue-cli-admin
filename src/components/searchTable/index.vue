@@ -20,7 +20,8 @@
             <!-- select -->
             <el-select v-if="item.type === 'select'" v-model="form[item.model]" :multiple="item.multiple"
                 :placeholder="placeholderSelect(item)" clearable>
-                <el-option v-for="option in item.options" :key="option.value" :label="option.label" :value="option.value" />
+                <el-option v-for="option in item.options" :key="option.value" :label="$t(option.i18) || option.label"
+                    :value="option.value" />
             </el-select>
 
             <!-- date -->
@@ -33,18 +34,19 @@
 
             <!-- dateRange -->
             <el-date-picker v-if="item.type === 'dateRange'" v-model="form[item.model]" type="daterange" range-separator="-"
-                start-placeholder="开始日期" end-placeholder="结束日期">
+                :start-placeholder="$t('com_lab_009') || 开始日期" :end-placeholder="$t('com_lab_010') || 结束日期">
             </el-date-picker>
 
             <!-- dateTimeRange -->
             <el-date-picker v-if="item.type === 'dateTimeRange'" v-model="form[item.model]" type="datetimerange"
-                range-separator="-" start-placeholder="开始时间" end-placeholder="结束时间">
+                range-separator="-" :start-placeholder="$t('com_lab_011') || 开始时间"
+                :end-placeholder="$t('com_lab_012') || 结束时间">
             </el-date-picker>
         </div>
 
         <div class="element-form-item">
-            <el-button type="primary" @click="search()">查询</el-button>
-            <el-button type="primary" @click="reset()">重置</el-button>
+            <el-button type="primary" @click="search()">{{ $t('com_btn_003') || 查询 }}</el-button>
+            <el-button type="primary" @click="reset()">{{ $t('com_btn_004') || 重置 }}</el-button>
         </div>
 
         <slot name="table"></slot>
@@ -86,7 +88,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .element-form {
     display: inline-block;
 }
@@ -94,11 +96,15 @@ export default {
 .element-form-item {
     margin-bottom: 22px;
     display: inline-block;
-    width: 33.3%;
+    width: 33.33%;
 }
 
+.element-form-item > label{
+    display: inline-block;
+    width: 80px;
+    text-align: right;
+}
 .el-input {
-    max-width: 200px;
-    min-width: 100px;
+    width: 250px;
 }
 </style>

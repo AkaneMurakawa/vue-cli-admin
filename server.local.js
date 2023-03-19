@@ -64,7 +64,7 @@ app.post('/login', (req, res) => {
     // 注意：这里做的是简单版，实际上后端应该返回的是图片而不是文字，如果是文字轻易就被识别了
     if (!captchaObj) {
         res.send(Result.error('请刷新验证码'));
-    } else if (captchaObj.value !== req.body.captcha) {
+    } else if (captchaObj.value.toUpperCase() !== req.body.captcha.toUpperCase()) {
         res.send(Result.error('验证码错误'));
     } else {
         console.log(req.body.email, '上线了')

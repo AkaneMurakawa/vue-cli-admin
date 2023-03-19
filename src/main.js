@@ -1,3 +1,4 @@
+// 引入基础配置config，必须第一执行
 import config from './config'
 import Vue from 'vue'
 import App from './App.vue'

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import './assets/css/base.css'
+import './assets/css/native.css'
 import './assets/css/elementui.css'
 import './assets/css/app.css'
 import Header from "./components/header";

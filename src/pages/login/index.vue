@@ -3,10 +3,8 @@
         <el-col class="mt-15vh" :span="8" :xs="{ span: 24, offset: 0 }" :offset="8">
             <div class="login-container">
                 <el-form :model="loginForm" status-icon :rules="rules" ref="loginForm" class="loginForm">
-                    <div class="title-container">
-                        <p class="title">
-                            <a href="/">{{ $t('com_lab_000') }}</a>
-                        </p>
+                    <div class="login-title-container">
+                        <a href="/">{{ $t('com_lab_000') }}</a>
                     </div>
                     <el-form-item prop="email">
                         <el-input type="email" v-model="loginForm.email" prefix-icon="el-icon-user" placeholder="账号"
@@ -24,16 +22,16 @@
                         <Captcha class="float-right" :captchaCode="captchaCode" @click.native="refreshCaptcha"></Captcha>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" class="si-login" icon="el-icon-s-promotion"
+                        <el-button type="primary" class="login-btn" icon="el-icon-s-promotion"
                             @click="submitForm('loginForm')">
                             {{ $t('com_btn_001') }}
                         </el-button>
                     </el-form-item>
                     <el-form-item>
-                        <div class="text-container text-left">
-                            <a href="#" class="text-muted">{{ $t('com_lab_001') }}</a>
-                            <a href="#" class="text-muted">{{ $t('com_lab_002') }}</a>
-                            <div class="lang float-right">
+                        <div class="login-text-container text-left">
+                            <a href="#" class="login-text-muted">{{ $t('com_lab_001') }}</a>
+                            <a href="#" class="login-text-muted">{{ $t('com_lab_002') }}</a>
+                            <div class="login-lang float-right">
                                 <Lang></Lang>
                             </div>
                         </div>

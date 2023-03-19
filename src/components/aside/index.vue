@@ -2,7 +2,7 @@
     <el-aside>
         <el-row class="tac">
             <el-col :span="24">
-                <div class="aside-title">
+                <div class="aside-title text-center">
                     <a href="/">{{ $t('com_lab_000') }}</a>
                 </div>
                 <el-menu class="el-menu-vertical-demo" @select="handleSelect" :default-openeds="defaultOpeneds">

@@ -1,4 +1,8 @@
 /* 自定义样式 开始 */
+:root {
+    --main-color: #555d65;
+}
+
 #app {
     font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
         Helvetica Neue, Arial, Noto Sans, Liberation Sans, sans-serif,
@@ -9,13 +13,21 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
+    color: var(--main-color);
     /* 通过calc计算屏幕 */
     height: calc(100vh);
 }
 
+.text-center {
+    text-align: center;
+}
+
 .text-left {
     text-align: left;
+}
+
+.text-right {
+    text-align: right;
 }
 
 .float-left {
@@ -55,6 +67,19 @@
     font-size: 2em;
 }
 
+.pt-2,
+.py-2 {
+    padding-top: .5rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
 .display-4 {
     font-size: 3.5rem;
     font-weight: 300;
@@ -69,25 +94,8 @@
     color: rgb(165, 42, 42);
 }
 
-.pt-2,
-.py-2 {
-    padding-top: .5rem;
-}
-
-.mb-4 {
-    margin-bottom: 1.5rem;
-}
-
-.mt-4 {
-    margin-top: 1.5rem;
-}
-
 .font-weight-normal {
     font-weight: 400;
-}
-
-.text-center {
-    text-align: center;
 }
 
 /* 自定义样式 结束 */

@@ -10,8 +10,16 @@
             com_lab_006: 'User',
             com_lab_007: 'Profile',
             com_lab_008: 'Ticket',
+            com_lab_009: 'Start Date',
+            com_lab_010: 'End Date',
+            com_lab_011: 'Start Time',
+            com_lab_012: 'End Time',
+
             com_btn_001: 'Login',
             com_btn_002: 'Logout',
+            com_btn_003: 'Search',
+            com_btn_004: 'Reset',
+
         }
     }
 })()
