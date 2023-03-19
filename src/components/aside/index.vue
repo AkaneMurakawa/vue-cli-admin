@@ -30,10 +30,18 @@ export default {
     data() {
         return {
             isCollapse: false,
-            collapseStyle: {},
+            collapseStyle: { width: '200px !important' },
         };
     },
     methods: {
+        collapseMenu() {
+            this.isCollapse = !this.isCollapse;
+            if (this.isCollapse) {
+                this.collapseStyle = { width: '60px !important', 'transition': 'width 0.5s' }
+            } else {
+                this.collapseStyle = { width: '200px !important', 'transition': 'width 0.5s' }
+            }
+        },
         handleSelect(key, keyPath) {
             this.$bus.$emit("setActiveRouteKey", key);
         },
@@ -50,16 +58,14 @@ export default {
         defaultOpeneds() {
             // 计算属性需要值变化才会改变，因此这里合并的时候需要设置为[]，展开后重新计算
             if (this.isCollapse) {
-                this.collapseStyle = { width: '60px !important', 'transition': 'width 0.5s' }
                 return [];
             }
-            this.collapseStyle = { width: '200px !important', 'transition': 'width 0.5s' }
             return this.$store.state.menu.menu.map(item => item.name);
         }
     },
     mounted() {
         this.initMenu();
-        this.$bus.$on('collapseMenu', () => this.isCollapse = !this.isCollapse);
+        this.$bus.$on('collapseMenu', this.collapseMenu);
     },
 }
 </script>
