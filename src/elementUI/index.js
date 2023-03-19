@@ -37,6 +37,7 @@ import {
     Dialog,
     Card,
     InputNumber,
+    Tooltip,
 } from 'element-ui';
 
 // 按需引用
@@ -82,3 +83,4 @@ Vue.use(Tree)
 Vue.use(Dialog)
 Vue.use(Card)
 Vue.use(InputNumber)
+Vue.use(Tooltip)

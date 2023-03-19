@@ -5,6 +5,7 @@ const menu = require('./data/menu.js')
 const locale = require('./data/locale.js')
 const plan = require('./data/plan.js')
 const userInfo = require('./data/userInfo.js')
+const ticket = require('./data/ticket.js')
 
 const app = express()
 // req.body包含在请求正文中提交的数据键值对。默认情况下，它是 undefined，
@@ -89,6 +90,34 @@ app.get('/getCaptcha/:captchaKey', (req, res) => {
         value: captch
     })
     res.send(Result.success(captch));
+})
+
+app.post('/getTicket', (req, res) => {
+    const current = req.body.current;
+    const size = req.body.size;
+    // 简单模拟分页
+    const totalRecords = ticket.filter(item => {
+        if(req.body.subject && req.body.subject !== '' && item.subject.indexOf(req.body.subject) === -1){
+            return false;
+        }
+        if(req.body.workOrderLevel && req.body.workOrderLevel !== '' && item.workOrderLevel !== req.body.workOrderLevel){
+            return false;
+        }
+        if(req.body.workOrderStatus && req.body.workOrderStatus !== '' && item.workOrderStatus !== req.body.workOrderStatus){
+            return false;
+        }
+        return true;
+    })
+
+    let response = {
+        current: current || 1,
+        size: size || 10,
+        total: totalRecords.length,
+        pages: Math.floor(totalRecords.length / size) || 0,
+        // 简单分页处理
+        records: totalRecords.slice((current - 1) * size, current * size)
+    }
+    res.send(Result.success(response));
 })
 
 const server = app.listen(9000, err => {

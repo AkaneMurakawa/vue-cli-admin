@@ -2,9 +2,9 @@ import Constant from '@/common/constant'
 
 export const options = [{
         type: 'input',
-        label: '工单',
+        label: '主题',
         i18: '',
-        model: 'workOrder',
+        model: 'subject',
         placeholder: '',
         placeholderI18: '',
         maxlength: undefined,
@@ -28,11 +28,10 @@ export const options = [{
         placeholder: '',
         placeholderI18: '',
         max: undefined,
-        min: undefined,
+        min: 0,
         step: undefined,
         precision: 2,
     },
-
     {
         type: 'select',
         label: '工单级别',
@@ -44,13 +43,14 @@ export const options = [{
         multiple: false,
     },
     {
-        type: 'date',
-        label: '创建日期',
+        type: 'select',
+        label: '工单状态',
         i18: '',
-        model: 'createTime',
+        model: 'workOrderStatus',
         placeholder: '',
         placeholderI18: '',
-        format: undefined,
+        options: Constant.workOrderStatus,
+        multiple: false,
     },
     {
         type: 'dateTime',
