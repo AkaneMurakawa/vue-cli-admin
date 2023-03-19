@@ -1,0 +1,19 @@
+.el-header {
+    background-color: #2768d0;
+    color: #fff;
+    text-align: center;
+    line-height: 60px;
+    padding: 0 !important;
+}
+
+.header-logo,
+.header-logo>a {
+    background-color: #3c77d5;
+    color: hsla(0, 0%, 100%, .75);
+    font-size: 1.25rem;
+    width: 200px;
+}
+
+.header-menu-title {
+    padding-left: 20px;
+}

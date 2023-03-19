@@ -1,6 +1,13 @@
 <template>
     <el-header>
         <div class="float-left">
+            <div class="text-center header-logo">
+                <a href="/" class="fa-2x">{{ $t('com_lab_000') }}</a>
+                <i v-show="isCollapse" @click="collapseMenu()" class="el-icon-s-unfold"></i>
+                <i v-show="!isCollapse" @click="collapseMenu()" class="el-icon-s-fold"></i>
+            </div>
+        </div>
+        <div class="float-left header-menu-title">
             <span>{{ $t($route.meta.i18) || $route.meta.title }}</span>
         </div>
         <el-menu class="el-menu-demo float-right" mode="horizontal" @select="handleSelect" background-color="#2768d0"
@@ -20,6 +27,7 @@
 </template>
 
 <script>
+import '@/assets/css/header.css'
 import { auth } from "@/auth";
 import Lang from '@/components/lang'
 import { MessageBox } from 'element-ui';
@@ -28,9 +36,13 @@ export default {
     components: { Lang },
     data() {
         return {
+            isCollapse: false,
         };
     },
     methods: {
+        collapseMenu() {
+            this.$bus.$emit('collapseMenu');
+        },
         handleSelect(key, keyPath) {
             if ("profile" === key) {
                 this.$router.push({ name: key });
@@ -49,7 +61,8 @@ export default {
                 this.$router.push({ path: "/login" });
             });
         }
-    }, mounted() {
+    },
+    mounted() {
         // 获取用户信息
         this.$store.dispatch('user/getInfo');
     }

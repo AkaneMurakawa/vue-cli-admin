@@ -1,13 +1,13 @@
 <template>
-    <el-aside>
+    <el-aside :style="collapseStyle">
         <el-row class="tac">
             <el-col :span="24">
-                <div class="aside-title text-center">
-                    <a href="/">{{ $t('com_lab_000') }}</a>
-                </div>
-                <el-menu class="el-menu-vertical-demo" @select="handleSelect" :default-openeds="defaultOpeneds">
-                    <el-submenu :index="menu.name" v-for="menu in $store.state.menu.menu" :key="menu.id">
+                <el-menu class="el-menu-vertical" @select="handleSelect" :default-openeds="defaultOpeneds"
+                    :collapse="isCollapse">
+                    <el-submenu :index="menu.name" v-for="menu in $store.state.menu.menu" :key="menu.id"
+                        :display="isCollapse">
                         <template slot="title">
+                            <i :class="menu.meta.icon"></i>
                             <span slot="title">{{ $t(menu.meta.i18) || menu.meta.title }}</span>
                         </template>
                         <el-menu-item-group>
@@ -29,6 +29,8 @@ export default {
     name: 'Aside',
     data() {
         return {
+            isCollapse: false,
+            collapseStyle: {},
         };
     },
     methods: {
@@ -46,11 +48,18 @@ export default {
     computed: {
         // 默认打开一级菜单
         defaultOpeneds() {
+            // 计算属性需要值变化才会改变，因此这里合并的时候需要设置为[]，展开后重新计算
+            if (this.isCollapse) {
+                this.collapseStyle = { width: '60px !important', 'transition': 'width 0.5s' }
+                return [];
+            }
+            this.collapseStyle = { width: '200px !important', 'transition': 'width 0.5s' }
             return this.$store.state.menu.menu.map(item => item.name);
         }
     },
     mounted() {
         this.initMenu();
+        this.$bus.$on('collapseMenu', () => this.isCollapse = !this.isCollapse);
     },
 }
 </script>

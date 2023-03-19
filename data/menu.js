@@ -13,7 +13,7 @@ module.exports = [{
             keepAlive: true,
             title: '订阅',
             i18: 'com_lab_003',
-            icon: '',
+            icon: 'el-icon-shopping-cart-full',
         },
         children: [{
                 id: '11',
@@ -55,7 +55,7 @@ module.exports = [{
         meta: {
             title: '用户',
             i18: 'com_lab_006',
-            icon: '',
+            icon: 'el-icon-user',
         },
         children: [{
                 id: '21',

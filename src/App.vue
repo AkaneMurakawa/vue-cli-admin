@@ -1,16 +1,18 @@
 <template>
     <div id="app">
-        <el-container>
-            <Aside v-show="isRequiresAuth()"></Aside>
-            <el-container direction="vertical">
-                <Header v-show="isRequiresAuth()"></Header>
-                <el-main>
-                    <keep-alive>
-                        <router-view v-if="$route.meta.isKeepAlive"></router-view>
-                    </keep-alive>
-                    <router-view v-if="!$route.meta.isKeepAlive"></router-view>
-                </el-main>
-                <Footer v-show="isRequiresAuth()"></Footer>
+        <el-container direction="vertical">
+            <Header v-show="isRequiresAuth()"></Header>
+            <el-container>
+                <Aside v-show="isRequiresAuth()"></Aside>
+                <el-container direction="vertical">
+                    <el-main>
+                        <keep-alive>
+                            <router-view v-if="$route.meta.isKeepAlive"></router-view>
+                        </keep-alive>
+                        <router-view v-if="!$route.meta.isKeepAlive"></router-view>
+                    </el-main>
+                    <Footer v-show="isRequiresAuth()"></Footer>
+                </el-container>
             </el-container>
         </el-container>
     </div>
@@ -62,12 +64,12 @@ export default {
             // 跳转
             this.$router.push({ name: key });
         },
-        reloadRoute(){
+        reloadRoute() {
             // 临时解决，route name === path 的最后一个
             let pathname = location.pathname;
             let path = pathname.split('/');
-            let routeName = path[path.length-1];
-            if (routeName){
+            let routeName = path[path.length - 1];
+            if (routeName) {
                 // FIXME 未成功跳转
                 this.setActiveRouteKey(routeName);
             }

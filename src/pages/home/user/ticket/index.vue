@@ -1,9 +1,10 @@
 <template>
-    <div>
+    <el-card shadow="never">
         <search-table :options="options" :form="eform" :tableData="tableData" @handleSearch="handleSearch"
             @handleReset="handleReset" :immediate="true">
             <el-table slot="table" :data="tableData.records" @selection-change="handleSelectionChange"
-                :cell-style="{ 'text-align': 'center' }" :header-cell-style="{ 'text-align': 'center' }" border
+                :cell-style="{ 'text-align': 'center' }" 
+                :header-cell-style="{ 'text-align': 'center', 'background':'#f5f7fa'}" border
                 class="width">
                 <el-table-column type="selection" width="55">
                 </el-table-column>
@@ -32,7 +33,7 @@
                 </el-table-column>
             </el-table>
         </search-table>
-    </div>
+    </el-card>
 </template>
 
 <script>

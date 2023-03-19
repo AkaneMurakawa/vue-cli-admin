@@ -1,32 +1,11 @@
 /* elementUI 开始 */
-.el-header {
-    background-color: #2768d0;
-    color: #fff;
-    text-align: center;
-    line-height: 60px;
-}
-
-.el-aside {
-    background-color: #fff;
-    color: #555d65;
-    text-align: left;
-    line-height: 60px;
-    float: left;
-}
-
 .el-main {
     background-color: #f0f3f8;
     color: var(--main-color);
     text-align: left !important;
     line-height: 40px;
     float: left;
-}
-
-.el-footer {
-    background-color: #f0f3f8;
-    color: var(--main-color);
-    text-align: center;
-    line-height: 60px;
+    border-left: solid 1px #e6e6e6 !important;
 }
 
 .el-container {

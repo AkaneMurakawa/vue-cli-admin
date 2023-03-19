@@ -1,12 +1,13 @@
 .el-aside {
-    width: 240px !important;
+    background-color: #fff;
+    color: #555d65;
+    text-align: left;
+    line-height: 60px;
+    float: left;
     overflow-y: hidden !important;
     text-align: left !important;
 }
 
-.aside-title,
-.aside-title>a {
-    background-color: #3c77d5;
-    color: hsla(0, 0%, 100%, .75);
-    font-size: 1.25rem;
+.el-menu {
+    border-right: solid 0px #e6e6e6 !important;
 }
