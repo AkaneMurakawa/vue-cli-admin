@@ -96,7 +96,7 @@ export default {
                 // 路由跳转
                 this.$router.push({ path: '/' });
             } else {
-                this.$message(response);
+                this.$response(response);
             }
         },
         async getCaptcha() {

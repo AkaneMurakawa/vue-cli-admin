@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import { Message } from 'element-ui';
 export default {
     name: "Profile",
     data() {
@@ -81,7 +80,7 @@ export default {
 
         },
         modifyPass() {
-            Message.success('修改成功');
+            this.$message.success('修改成功');
         }
     }
 };

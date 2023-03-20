@@ -7,7 +7,10 @@ import router from './router'
 import store from './store'
 import Api from '@/http/api'
 import i18n from '@/i18'
-import message from '@/util/message'
+import response from '@/util/response'
+import {
+    Message
+} from 'element-ui';
 import elementUI from './elementUI'
 
 Vue.config.productionTip = false
@@ -31,7 +34,9 @@ loadJS(function () {
             // API
             Vue.prototype.$API = new Api();
             // message
-            Vue.prototype.$message = message;
+            Vue.prototype.$message = Message;
+            // response
+            Vue.prototype.$response = response;
         }
     })
 });

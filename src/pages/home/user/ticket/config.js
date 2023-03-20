@@ -90,10 +90,10 @@ export const toptions = [{
     label: '新增',
     i18: '',
     icon: 'el-icon-circle-plus-outline',
-    method: 'handlerAdd'
+    method: 'handleAdd'
 }, {
     label: '取消',
     i18: '',
     icon: 'el-icon-circle-close',
-    method: 'handlerCancel'
+    method: 'handleCancel'
 }, ]

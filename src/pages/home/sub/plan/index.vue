@@ -45,7 +45,7 @@ export default {
                 timestamp: Date.now()
             }
             // 统一消息
-            this.$message(response);
+            this.$response(response);
         },
         async getPlan() {
             const response = await this.$API.GET('/api/getPlan');

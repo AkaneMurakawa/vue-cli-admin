@@ -3,8 +3,8 @@ import {
 } from 'element-ui';
 
 /**
- * 统一消息提示，会绑定到Vue.prototype.$message
- * this.$messsage(response)
+ * 统一消息提示，会绑定到Vue.prototype.$response
+ * this.$response(response)
 response = {
     code: '401',
     success: false,
@@ -23,18 +23,15 @@ response = {
 }
  * 
  */
-
 export default function (response) {
     let message = response.message;
     if (response.success) {
         Message.success(message);
     } else {
         if (response.error) {
-            message = response.error.map(e => e.message).join('<br/><br/>')
+            response.error.forEach(e => {
+                Message.error(e.message);
+            });
         }
-        Message.error({
-            dangerouslyUseHTMLString: true,
-            message,
-        });
     }
 }
