@@ -37,9 +37,9 @@ export default {
         collapseMenu() {
             this.isCollapse = !this.isCollapse;
             if (this.isCollapse) {
-                this.collapseStyle = { width: '60px !important', 'transition': 'width 0.5s' }
+                this.collapseStyle = { width: '60px !important', 'transition': 'width 0.6s' }
             } else {
-                this.collapseStyle = { width: '200px !important', 'transition': 'width 0.5s' }
+                this.collapseStyle = { width: '200px !important', 'transition': 'width 0.6s' }
             }
         },
         handleSelect(key, keyPath) {

@@ -11,7 +11,7 @@
                         </keep-alive>
                         <router-view v-if="!$route.meta.isKeepAlive"></router-view>
                     </el-main>
-                    <Footer v-show="isRequiresAuth()"></Footer>
+                    <Footer></Footer>
                 </el-container>
             </el-container>
         </el-container>

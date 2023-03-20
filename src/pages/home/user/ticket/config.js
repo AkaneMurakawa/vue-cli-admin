@@ -59,22 +59,25 @@ export const options = [{
         model: 'createTime',
         placeholder: '',
         placeholderI18: '',
-        format: undefined,
     },
     {
         type: 'dateRange',
         label: '创建开始日期',
         i18: '',
-        model: 'create',
+        model: 'createDate',
         placeholder: '',
         placeholderI18: '',
         format: undefined,
+        // model后缀，默认from、to
+        from: 'from',
+        to: 'to',
     },
     {
         type: 'dateTimeRange',
         label: '创建开始时间',
         i18: '',
-        model: 'create',
+        // 注意属性名称不要和上面dateTime的model重名，否则data-picker属性会覆盖值
+        model: 'createTimeRange',
         placeholder: '',
         placeholderI18: '',
         format: undefined,

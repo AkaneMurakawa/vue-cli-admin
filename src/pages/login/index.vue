@@ -1,7 +1,7 @@
 <template>
     <el-row :gutter="24">
         <el-col class="mt-15vh" :span="8" :xs="{ span: 24, offset: 0 }" :offset="8">
-            <div class="login-container">
+            <el-card shadow="hover" class="login-container">
                 <el-form :model="loginForm" status-icon :rules="rules" ref="loginForm" class="loginForm">
                     <div class="login-title-container">
                         <a href="/">{{ $t('com_lab_000') }}</a>
@@ -37,7 +37,7 @@
                         </div>
                     </el-form-item>
                 </el-form>
-            </div>
+            </el-card>
         </el-col>
     </el-row>
 </template>

@@ -3,15 +3,13 @@
         <div :model="form" :options="options" class="element-form">
             <div v-for="(item, index) in options" :key="index" class="element-form-item">
                 <!-- label -->
-                <el-tooltip class="item" effect="light" v-if="showLabelTip(item)" :content="$t(item.i18) || item.label"
-                    placement="top">
-                    <label :for="item.model">
+                <el-tooltip v-if="showLabelTip(item)" :content="$t(item.i18) || item.label" placement="top">
+                    <label :for="item.model" class="typeClass">
                         {{ labelFormat(item) }}
                     </label>
                 </el-tooltip>
-                <el-tooltip class="item" effect="light" disabled v-else :content="$t(item.i18) || item.label"
-                    placement="top">
-                    <label :for="item.model">
+                <el-tooltip disabled v-else :content="$t(item.i18) || item.label" placement="top">
+                    <label :for="item.model" class="typeClass">
                         {{ labelFormat(item) }}
                     </label>
                 </el-tooltip>
@@ -38,22 +36,22 @@
                 </el-select>
 
                 <!-- date -->
-                <el-date-picker v-if="item.type === 'date'" v-model="form[item.model]" type="date" :format="item.format"
-                    :placeholder="placeholderDate(item)" clearable />
+                <el-date-picker v-if="item.type === 'date'" v-model="form[item.model]" type="date" value-format="timestamp"
+                    :format="item.format" :placeholder="placeholderDate(item)" clearable />
 
                 <!-- dateTime -->
                 <el-date-picker v-if="item.type === 'dateTime'" v-model="form[item.model]" type="datetime"
-                    :format="item.format" :placeholder="placeholderDate(item)" clearable />
+                    value-format="timestamp" :format="item.format" :placeholder="placeholderDate(item)" clearable />
 
                 <!-- dateRange -->
                 <el-date-picker v-if="item.type === 'dateRange'" v-model="form[item.model]" type="daterange"
-                    range-separator="-" :start-placeholder="$t('com_lab_009') || 开始日期"
+                    value-format="timestamp" range-separator="-" :start-placeholder="$t('com_lab_009') || 开始日期"
                     :end-placeholder="$t('com_lab_010') || 结束日期" />
 
                 <!-- dateTimeRange -->
                 <el-date-picker v-if="item.type === 'dateTimeRange'" v-model="form[item.model]" type="datetimerange"
-                    range-separator="-" :start-placeholder="$t('com_lab_011') || 开始时间" format="MM-dd HH:mm"
-                    :end-placeholder="$t('com_lab_012') || 结束时间" />
+                    value-format="timestamp" range-separator="-" :start-placeholder="$t('com_lab_011') || 开始时间"
+                    format="MM-dd HH:mm" :end-placeholder="$t('com_lab_012') || 结束时间" />
             </div>
 
             <!-- btn -->
@@ -82,15 +80,17 @@
 export default {
     name: 'SearchTable',
     props: {
-        // search table option
+        // 查询条件配置
         options: {
             type: Array,
             require: true
         },
+        // 查询条件
         form: {
             type: Object,
             require: true
         },
+        // 分页数据，{current, size, pages, records}
         tableData: {
             type: Object,
             require: true
@@ -130,7 +130,23 @@ export default {
             this.handleSearch({ current });
         },
         handleSearch(condition) {
+            condition = this.conditionFormat(condition);
             this.$emit('handleSearch', { ... this.form, ...condition });
+        },
+        conditionFormat(condition) {
+            this.options.forEach(item => {
+                // range条件处理
+                if (item.type === 'dateRange' || item.type === 'dateTimeRange') {
+                    let arr = this.form[item.model];
+                    if (arr) {
+                        const from = item.from || 'from';
+                        const to = item.to || 'to';
+                        condition = { ...condition, [item.model + from]: arr[0], [item.model + to]: arr[1] };
+                        return;
+                    }
+                }
+            });
+            return condition;
         },
         handleReset() {
             this.$emit('handleReset')
@@ -144,7 +160,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .element-form {
     /* 开启弹性盒模型 */
     display: flex;
@@ -162,6 +178,8 @@ export default {
     width: 33.33%;
     --element-form-item-label-width: 25%;
     --element-form-item-label-form: 66%;
+    /* 100% - var(--element-form-item-label-width) - var(--element-form-item-label-form); */
+    --element-form-item-label-pr: 9%;
 }
 
 .element-form-item>label {
@@ -171,8 +189,7 @@ export default {
 }
 
 .element-form-item-btn-pr {
-    /* 100% - var(--element-form-item-label-width) - var(--element-form-item-label-form); */
-    padding-right: 9%;
+    padding-right: var(--element-form-item-label-pr);
 }
 
 .element-form-item>.el-input,
@@ -181,5 +198,9 @@ export default {
 .element-form-item>.el-date-editor.el-input,
 .element-form-item>.el-date-editor.el-input__inner {
     width: var(--element-form-item-label-form);
+}
+
+.el-tooltip__popper {
+    opacity: 0.8;
 }
 </style>
