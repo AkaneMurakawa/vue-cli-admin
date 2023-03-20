@@ -57,8 +57,8 @@ export default {
         return {
             captchaCode: '',
             loginForm: {
-                email: "",
-                pass: "",
+                email: "123456@gmai.com",
+                pass: "123456",
                 captcha: '',
                 captchaKey: '',
             },

@@ -5,7 +5,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐⭐⭐'
+        evaluate: 4
     },
     {
         workOrderNo: '1002',
@@ -14,7 +14,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210835645,
         reply: '查询到你未配置发件人，请配置后再重新下单',
-        evaluate: '⭐⭐⭐⭐⭐'
+        evaluate: 5
     },
     {
         workOrderNo: '1003',
@@ -23,7 +23,7 @@ module.exports = [{
         workOrderStatus: 'C',
         createTime: 1679210935645,
         reply: '客户下只允许创建一个参考号，建议换一个',
-        evaluate: '⭐⭐⭐'
+        evaluate: 3
     },
     {
         workOrderNo: '1004',
@@ -32,7 +32,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐⭐'
+        evaluate: 3
     },
     {
         workOrderNo: '1005',
@@ -41,7 +41,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐'
+        evaluate: 2
     },
     {
         workOrderNo: '1006',
@@ -50,7 +50,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐⭐⭐'
+        evaluate: 4
     },
     {
         workOrderNo: '1007',
@@ -59,7 +59,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐'
+        evaluate: 2
     },
     {
         workOrderNo: '1008',
@@ -68,7 +68,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐⭐⭐⭐'
+        evaluate: 5
     },
     {
         workOrderNo: '1009',
@@ -77,7 +77,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐'
+        evaluate: 1
     },
     {
         workOrderNo: '1010',
@@ -86,7 +86,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐⭐'
+        evaluate: 3
     },
     {
         workOrderNo: '1011',
@@ -95,7 +95,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐⭐⭐⭐'
+        evaluate: 5
     },
     {
         workOrderNo: '1012',
@@ -104,7 +104,7 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐'
+        evaluate: 1
     },
     {
         workOrderNo: '1013',
@@ -113,6 +113,6 @@ module.exports = [{
         workOrderStatus: 'I',
         createTime: 1679210935645,
         reply: '亲，这边系统数据同步有问题，现已同步，你再查查看看',
-        evaluate: '⭐⭐⭐'
+        evaluate: 3
     },
 ]

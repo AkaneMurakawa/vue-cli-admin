@@ -30,7 +30,10 @@ export default function (response) {
     } else {
         if (response.error) {
             response.error.forEach(e => {
-                Message.error(e.message);
+                // 缓冲提示
+                setTimeout(() => {
+                    Message.error(e.message);
+                }, 500)
             });
         }
     }
