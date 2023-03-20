@@ -1,7 +1,9 @@
 <template>
     <div>
-        <div :model="form" :options="options" class="element-form">
-            <div v-for="(item, index) in options" :key="index" class="element-form-item">
+        <!-- 查询条件 -->
+        <div class="element-form">
+            <!-- 查询条件配置 -->
+            <div v-for="(item, index) in soptions" :key="index" class="element-form-item">
                 <!-- label -->
                 <el-tooltip v-if="showLabelTip(item)" :content="$t(item.i18) || item.label" placement="top">
                     <label :for="item.model" class="typeClass">
@@ -53,7 +55,6 @@
                     value-format="timestamp" range-separator="-" :start-placeholder="$t('com_lab_011') || 开始时间"
                     format="MM-dd HH:mm" :end-placeholder="$t('com_lab_012') || 结束时间" />
             </div>
-
             <!-- btn -->
             <div class="element-form-item">
                 <div class="text-right element-form-item-btn-pr">
@@ -66,8 +67,19 @@
                 </div>
             </div>
         </div>
+
+        <!-- 表格头部操作配置 -->
+        <div v-show="toptions && toptions.length > 0" class="element-tabel-header-option">
+            <div class="element-tabel-header-option" v-for="(opt, index) in toptions" :key="index">
+                <el-button :icon="opt.icon" size="mini" @click="handlerEvent(opt)" type="primary" plain>
+                    {{ $t(opt.i18) || opt.label }}
+                </el-button>
+            </div>
+        </div>
+
         <!-- 表格 -->
         <slot name="table"></slot>
+
         <!-- 分页 -->
         <el-pagination v-if="pagination" class="float-right mt-2" @size-change="handleSizeChange"
             @current-change="handleCurrentChange" :current-page="form.current" :page-sizes="[10, 20, 50, 100, 500]"
@@ -81,9 +93,14 @@ export default {
     name: 'SearchTable',
     props: {
         // 查询条件配置
-        options: {
+        soptions: {
             type: Array,
             require: true
+        },
+        // 表头配置
+        toptions: {
+            type: Array,
+            require: false
         },
         // 查询条件
         form: {
@@ -107,6 +124,23 @@ export default {
         }
     },
     methods: {
+        /** $emit start */
+        // 查询
+        handleSearch(condition) {
+            condition = this.conditionFormat(condition);
+            this.$emit('handleSearch', { ... this.form, ...condition });
+        },
+        // 重置
+        handleReset() {
+            this.$emit('handleReset')
+        },
+        // 表头配置事件
+        handlerEvent(opt) {
+            if (opt.method) {
+                this.$emit('handlerEvent', opt);
+            }
+        },
+        /** $emit end */
         labelFormat(item) {
             let label = this.$t(item.i18) || item.label;
             return (label.length > 4 ? label.substring(0, 4).concat('...') : label).concat('：')
@@ -129,12 +163,8 @@ export default {
         handleCurrentChange(current) {
             this.handleSearch({ current });
         },
-        handleSearch(condition) {
-            condition = this.conditionFormat(condition);
-            this.$emit('handleSearch', { ... this.form, ...condition });
-        },
         conditionFormat(condition) {
-            this.options.forEach(item => {
+            this.soptions.forEach(item => {
                 // range条件处理
                 if (item.type === 'dateRange' || item.type === 'dateTimeRange') {
                     let arr = this.form[item.model];
@@ -148,9 +178,7 @@ export default {
             });
             return condition;
         },
-        handleReset() {
-            this.$emit('handleReset')
-        },
+
     },
     mounted() {
         if (this.immediate) {
@@ -190,6 +218,14 @@ export default {
 
 .element-form-item-btn-pr {
     padding-right: var(--element-form-item-label-pr);
+}
+
+.element-tabel-header-option {
+    text-align: left;
+    background: #f5f7fa;
+    display: flex;
+    line-height: 64px;
+    padding: 10px 10px 10px 10px;
 }
 
 .element-form-item>.el-input,

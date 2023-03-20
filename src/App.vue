@@ -12,6 +12,7 @@
                         <router-view v-if="!$route.meta.isKeepAlive"></router-view>
                     </el-main>
                     <Footer></Footer>
+                    <Backtop></Backtop>
                 </el-container>
             </el-container>
         </el-container>
@@ -25,6 +26,7 @@ import './assets/css/app.css'
 import Header from "./components/header";
 import Aside from "./components/aside";
 import Footer from "./components/footer";
+import Backtop from "./components/backtop";
 import { setLanguage, setLocale } from "./i18";
 
 export default {
@@ -33,6 +35,7 @@ export default {
         Header,
         Aside,
         Footer,
+        Backtop
     },
     data() {
         return {

@@ -1,6 +1,7 @@
 import Constant from '@/common/constant'
 
-export const options = [{
+// 查询列表配置
+export const soptions = [{
         type: 'input',
         label: '主题',
         i18: '',
@@ -83,3 +84,16 @@ export const options = [{
         format: undefined,
     },
 ]
+
+// 表头配置
+export const toptions = [{
+    label: '新增',
+    i18: '',
+    icon: 'el-icon-circle-plus-outline',
+    method: 'handlerAdd'
+}, {
+    label: '取消',
+    i18: '',
+    icon: 'el-icon-circle-close',
+    method: 'handlerCancel'
+}, ]

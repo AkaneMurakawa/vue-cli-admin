@@ -116,3 +116,8 @@ export default {
     }
 };
 </script>
+<style scoped>
+.el-main {
+    background-image: url('@/assets/images/bg.png');
+}
+</style>

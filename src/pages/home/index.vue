@@ -1,6 +1,5 @@
 <template>
-    <div class="text-center full hidden-y">
-        <img class="width" src="@/assets/images/bg.png">
+    <div class="home-container text-center full hidden-y">
     </div>
 </template>
 
@@ -10,7 +9,8 @@ export default {
 };
 </script>
 <style scoped>
-.el-main {
-    overflow-y: hidden !important;
+.home-container {
+    background: url('@/assets/images/bg.png') no-repeat center !important;
+    background-size: auto 100% !important;
 }
 </style>

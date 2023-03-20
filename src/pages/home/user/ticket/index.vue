@@ -1,7 +1,7 @@
 <template>
     <el-card shadow="never">
-        <search-table :options="options" :form="eform" :tableData="tableData" @handleSearch="handleSearch"
-            @handleReset="handleReset" :immediate="true">
+        <search-table :soptions="soptions" :toptions="toptions" :form="eform" :tableData="tableData"
+            @handleSearch="handleSearch" @handleReset="handleReset" @handlerEvent="handlerEvent" :immediate="true">
             <el-table slot="table" :data="tableData.records" @selection-change="handleSelectionChange"
                 :cell-style="{ 'text-align': 'center' }"
                 :header-cell-style="{ 'text-align': 'center', 'background': '#f5f7fa' }" border class="width">
@@ -37,12 +37,27 @@
 
 <script>
 import SearchTable from '@/components/searchTable'
-import { options } from './config'
+import { soptions, toptions } from './config'
 import { formatOption, formatTime } from '@/util/formatter'
 export default {
     name: "Ticket",
     components: {
         SearchTable
+    },
+    data() {
+        return {
+            soptions,
+            toptions,
+            form: {
+                current: 1,
+                size: 10,
+            },
+            eform: {
+                current: 1,
+                size: 10,
+            },
+            tableData: {},
+        }
     },
     methods: {
         formatOption,
@@ -58,24 +73,11 @@ export default {
         handleReset() {
             this.eform = { ...this.form };
         },
+        handlerEvent(opt) {
+            console.log('handlerEvent', opt)
+        },
         handleSelectionChange(val) {
             this.multipleSelection = val;
-        }
-    },
-
-    data() {
-        return {
-            // search table options
-            options,
-            form: {
-                current: 1,
-                size: 10,
-            },
-            eform: {
-                current: 1,
-                size: 10,
-            },
-            tableData: {},
         }
     },
     mounted() {
