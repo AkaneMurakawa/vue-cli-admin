@@ -83,7 +83,6 @@
 import SearchTable from '@/components/searchTable'
 import { soptions, toptions } from './config'
 import { formatOption, formatTime } from '@/util/formatter'
-import { MessageBox } from 'element-ui';
 import Constant from '@/common/constant'
 export default {
     name: "Ticket",
@@ -210,7 +209,7 @@ export default {
                 return;
             }
             // 提示
-            MessageBox.confirm('确定要取消吗?', '', {
+            this.$confirm('确定要取消吗?', '', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning'

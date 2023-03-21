@@ -9,7 +9,8 @@ import Api from '@/http/api'
 import i18n from '@/i18'
 import response from '@/util/response'
 import {
-    Message
+    Message,
+    MessageBox
 } from 'element-ui';
 import element from './element'
 
@@ -35,6 +36,8 @@ loadJS(function () {
             Vue.prototype.$API = new Api();
             // message
             Vue.prototype.$message = Message;
+            // confirm
+            Vue.prototype.$confirm = MessageBox.confirm;
             // response
             Vue.prototype.$response = response;
         }
