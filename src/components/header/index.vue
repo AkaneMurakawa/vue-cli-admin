@@ -2,7 +2,9 @@
     <el-header>
         <div class="float-left">
             <div class="text-center header-logo">
-                <a href="/" class="fa-2x">{{ $t('com_lab_000') }} &nbsp;&nbsp;</a>
+                <router-link to="/">
+                    {{ $t('com_lab_000') }} &nbsp;&nbsp;
+                </router-link>
                 <i v-show="isCollapse" @click="collapseMenu()" class="el-icon-s-unfold"></i>
                 <i v-show="!isCollapse" @click="collapseMenu()" class="el-icon-s-fold"></i>
             </div>

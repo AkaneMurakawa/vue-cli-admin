@@ -8,9 +8,9 @@
                     <el-main>
                         <Tabs></Tabs>
                         <keep-alive>
-                            <router-view v-if="$route.meta.isKeepAlive"></router-view>
+                            <router-view v-if="$route.meta.keepAlive"></router-view>
                         </keep-alive>
-                        <router-view v-if="!$route.meta.isKeepAlive"></router-view>
+                        <router-view v-if="!$route.meta.keepAlive"></router-view>
                     </el-main>
                     <Footer></Footer>
                     <Backtop></Backtop>

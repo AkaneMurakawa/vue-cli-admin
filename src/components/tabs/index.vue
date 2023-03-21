@@ -1,5 +1,5 @@
 <template>
-    <el-tabs v-if="tabs.length > 0" v-model="activeTab" type="card" tab-position="top" closable
+    <el-tabs v-if="tabs.length > 0 && $route.name !== 'home'" v-model="activeTab" type="card" tab-position="top" closable
         @tab-click="handleAcitiveTab" @tab-remove="handleRemoveTab">
         <el-tab-pane v-for="(item) in tabs" :key="item.name" :label="item.title" :name="item.name">
             {{ item.content }}

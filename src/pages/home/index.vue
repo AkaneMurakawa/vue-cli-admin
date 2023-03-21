@@ -11,6 +11,6 @@ export default {
 <style scoped>
 .home-container {
     background: url('@/assets/images/bg.png') no-repeat center !important;
-    background-size: auto 100% !important;
+    background-size: auto 135% !important;
 }
 </style>
