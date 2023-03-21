@@ -19,4 +19,9 @@ h2 {
     font-size: 1.875rem;
 }
 
+.h3,
+h3 {
+    font-size: 1.275rem;
+}
+
 /* 重写基本样式 结束 */

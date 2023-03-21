@@ -67,6 +67,10 @@
     font-size: 2em;
 }
 
+.fa-1_5x {
+    font-size: 1.5em;
+}
+
 .pt-2,
 .py-2 {
     padding-top: .5rem;
