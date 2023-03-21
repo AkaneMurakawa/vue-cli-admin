@@ -1,6 +1,6 @@
 <template>
-    <el-tabs v-if="tabs.length > 0" value="activeTab" type="card" tab-position="top" closable @tab-click="handleAcitiveTab"
-        @tab-remove="handleRemoveTab">
+    <el-tabs v-if="tabs.length > 0" v-model="activeTab" type="card" tab-position="top" closable
+        @tab-click="handleAcitiveTab" @tab-remove="handleRemoveTab">
         <el-tab-pane v-for="(item) in tabs" :key="item.name" :label="item.title" :name="item.name">
             {{ item.content }}
         </el-tab-pane>
@@ -10,6 +10,11 @@
 <script>
 export default {
     name: 'Tabs',
+    data() {
+        return {
+            activeTab: undefined
+        }
+    },
     methods: {
         handleAcitiveTab(vc) {
             // vc上可以获取激活的数据
@@ -22,10 +27,13 @@ export default {
             this.$bus.$emit("setActiveRouteKey", tabs[tabs.length - 1].name);
         }
     },
+    watch: {
+        // activeTab调整为双向绑定，不使用计算属性的方式，会影响激活显示
+        '$store.state.menu.activeRouteKey'(newVal) {
+            this.activeTab = newVal;
+        }
+    },
     computed: {
-        activeTab() {
-            return this.$store.state.menu.activeRouteKey;
-        },
         tabs() {
             return this.$store.state.menu.historyRoute.map(route => {
                 return {

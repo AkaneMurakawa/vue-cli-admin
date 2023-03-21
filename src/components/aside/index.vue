@@ -3,7 +3,7 @@
         <el-row class="tac">
             <el-col :span="24">
                 <el-menu class="el-menu-vertical" @select="handleSelect" :default-openeds="defaultOpeneds"
-                    :collapse="isCollapse">
+                    :default-active="activeRoute" :collapse="isCollapse">
                     <el-submenu :index="menu.name" v-for="menu in $store.state.menu.menu" :key="menu.id"
                         :display="isCollapse">
                         <template slot="title">
@@ -29,6 +29,7 @@ export default {
     name: 'Aside',
     data() {
         return {
+            activeRoute: '',
             isCollapse: false,
             collapseStyle: { width: '200px !important' },
         };
@@ -52,6 +53,12 @@ export default {
                 this.$store.dispatch('menu/setMenu', response.data);
             }
         },
+    },
+    watch: {
+        // activeRoute调整为双向绑定，不使用计算属性的方式，会影响激活显示
+        '$store.state.menu.activeRouteKey'(newVal) {
+            this.activeRoute = newVal;
+        }
     },
     computed: {
         // 默认打开一级菜单

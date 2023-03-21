@@ -7,7 +7,6 @@ module.exports = [{
         component: '',
         // 重定向 
         redirect: null,
-        route: '',
         meta: {
             // 标记需要缓存
             keepAlive: true,
@@ -21,7 +20,6 @@ module.exports = [{
                 path: '/sub/subscribe',
                 component: 'pages/home/sub/subscribe',
                 redirect: null,
-                route: '',
                 meta: {
                     keepAlive: true,
                     title: '我的订阅',
@@ -35,7 +33,6 @@ module.exports = [{
                 path: '/sub/plan',
                 component: 'pages/home/sub/plan',
                 redirect: null,
-                route: '',
                 meta: {
                     keepAlive: true,
                     title: '购买订阅',
@@ -51,7 +48,6 @@ module.exports = [{
         path: '',
         component: '',
         redirect: null,
-        route: '',
         meta: {
             title: '用户',
             i18: 'com_lab_006',
@@ -63,7 +59,6 @@ module.exports = [{
                 path: '/user/profile',
                 component: 'pages/home/user/profile',
                 redirect: null,
-                route: '',
                 meta: {
                     keepAlive: true,
                     title: '个人中心',
@@ -77,7 +72,6 @@ module.exports = [{
                 path: '/user/ticket',
                 component: 'pages/home/user/ticket',
                 redirect: null,
-                route: '',
                 meta: {
                     keepAlive: true,
                     title: '我的工单',
