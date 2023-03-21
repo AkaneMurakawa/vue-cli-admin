@@ -35,7 +35,7 @@ export default {
         PUSH_ROUTE(state, route) {
             if (route) {
                 const hasRoute = List.anyMatch(state.routes, 'name', route.name);
-                if (!hasRoute) {
+                if (!hasRoute && route) {
                     state.routes.push(route)
                 }
             }
@@ -45,7 +45,7 @@ export default {
             state.activeRouteKey = name;
             const route = List.findFirst(state.routes, 'name', name);
             const hasRoute = List.anyMatch(state.historyRoute, 'name', name);
-            if (!hasRoute) {
+            if (!hasRoute && route) {
                 state.historyRoute.push(route);
             }
         },

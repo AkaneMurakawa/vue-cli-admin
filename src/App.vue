@@ -70,16 +70,6 @@ export default {
             // 跳转
             this.$router.push({ name: key });
         },
-        reloadRoute() {
-            // 临时解决，route name === path 的最后一个
-            let pathname = location.pathname;
-            let path = pathname.split('/');
-            let routeName = path[path.length - 1];
-            if (routeName) {
-                // FIXME 未成功跳转
-                this.setActiveRouteKey(routeName);
-            }
-        }
     },
     /**
      * App作为Root组件，用于初始化一些全局的配置
@@ -89,7 +79,6 @@ export default {
         // 监听refreshLang事件
         this.$bus.$on('refreshLang', this.refreshLang);
         this.$bus.$on('setActiveRouteKey', this.setActiveRouteKey);
-        this.reloadRoute();
     }
 };
 </script>
