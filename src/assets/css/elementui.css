@@ -13,4 +13,12 @@
     overflow: hidden;
 }
 
+.el-tabs__header {
+    margin: 0 0 0 !important;
+}
+
+.el-tabs {
+    background-color: #fff;
+}
+
 /* elementUI 结束 */

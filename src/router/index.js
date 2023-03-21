@@ -5,6 +5,7 @@ import {
     auth
 } from '@/auth'
 import Home from '@/pages/home'
+import List from "@/util/list";
 
 Vue.use(VueRouter);
 /**
@@ -144,9 +145,8 @@ function toRedirectPath(to, from, next, redirect) {
  * 但是如果跳转后又会进入beforeEach，就无限循环了，因此还需要通过给to.meta设置标记
  */
 function dynamicAddRoute(to, from, next) {
-    let m = findMenu(store.state.menu.menu, to.name);
-    if (m.length > 0) {
-        const dynamicRoute = m[0];
+    let dynamicRoute = List.findFirst(store.state.menu.menu, 'name', to.name);
+    if (dynamicRoute) {
         let route = {
             ...dynamicRoute,
             // 动态加载组件
@@ -162,27 +162,6 @@ function dynamicAddRoute(to, from, next) {
             replace: true
         });
     }
-}
-
-/**
- * 获取菜单，寻找第一个
- */
-function findMenu(menu, name) {
-    let result = [];
-    menu.forEach(item => {
-        if (item.name === name) {
-            result.push(item);
-            return;
-        }
-        if (item.children?.length > 0) {
-            let chilrdResult = findMenu(item.children, name);
-            if (chilrdResult.length > 0) {
-                result = chilrdResult;
-                return;
-            }
-        }
-    })
-    return result;
 }
 
 export default router

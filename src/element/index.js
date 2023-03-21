@@ -40,6 +40,8 @@ import {
     Tooltip,
     Backtop,
     Rate,
+    Tabs,
+    TabPane,
 } from 'element-ui';
 
 // 按需引用
@@ -88,3 +90,5 @@ Vue.use(InputNumber)
 Vue.use(Tooltip)
 Vue.use(Backtop)
 Vue.use(Rate)
+Vue.use(Tabs)
+Vue.use(TabPane)

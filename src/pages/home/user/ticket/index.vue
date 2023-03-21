@@ -204,7 +204,6 @@ export default {
         },
         // 取消
         handleEventCancel() {
-            console.log(this.$refs.multipleTable)
             // 校验
             if (this.multipleSelection.length < 1) {
                 this.$message.error('请先勾选要取消的数据');
@@ -217,6 +216,7 @@ export default {
                 type: 'warning'
             }).then(() => {
                 this.$message.success(`${this.multipleSelection.map(item => item.subject).join('')} 取消成功`);
+            }).finally(() => {
                 // 清空选择
                 this.$refs.multipleTable.clearSelection();
             });

@@ -6,6 +6,7 @@
                 <Aside v-show="isRequiresAuth()"></Aside>
                 <el-container direction="vertical">
                     <el-main>
+                        <Tabs></Tabs>
                         <keep-alive>
                             <router-view v-if="$route.meta.isKeepAlive"></router-view>
                         </keep-alive>
@@ -25,6 +26,7 @@ import './assets/css/elementui.css'
 import './assets/css/app.css'
 import Header from "./components/header";
 import Aside from "./components/aside";
+import Tabs from "./components/tabs";
 import Footer from "./components/footer";
 import Backtop from "./components/backtop";
 import { setLanguage, setLocale } from "./i18";
@@ -34,6 +36,7 @@ export default {
     components: {
         Header,
         Aside,
+        Tabs,
         Footer,
         Backtop
     },

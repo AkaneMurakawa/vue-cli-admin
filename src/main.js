@@ -11,7 +11,7 @@ import response from '@/util/response'
 import {
     Message
 } from 'element-ui';
-import elementUI from './elementUI'
+import element from './element'
 
 Vue.config.productionTip = false
 
