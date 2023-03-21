@@ -10,6 +10,7 @@
 
 .el-container {
     height: 100%;
+    overflow: hidden;
 }
 
 /* elementUI 结束 */
