@@ -1,4 +1,7 @@
-import Constant from '@/common/constant'
+import {
+    workOrderLevel,
+    workOrderStatus
+} from '@/common/constant'
 
 // 查询列表配置
 export const soptions = [{
@@ -40,7 +43,7 @@ export const soptions = [{
         model: 'workOrderLevel',
         placeholder: '',
         placeholderI18: '',
-        options: Constant.workOrderLevel,
+        options: workOrderLevel,
         multiple: false,
     },
     {
@@ -50,7 +53,7 @@ export const soptions = [{
         model: 'workOrderStatus',
         placeholder: '',
         placeholderI18: '',
-        options: Constant.workOrderStatus,
+        options: workOrderStatus,
         multiple: false,
     },
     {

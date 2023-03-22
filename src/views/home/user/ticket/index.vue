@@ -16,10 +16,10 @@
                 <el-table-column prop="subject" label="主题" align="center" width="120">
                 </el-table-column>
                 <el-table-column prop="workOrderLevel" align="center" label="工单级别"
-                    :formatter="(row) => formatOption('workOrderLevel', row.workOrderLevel)" width="100">
+                    :formatter="(row) => $t($utils.getLabel(workOrderLevel, row.workOrderLevel))" width="100">
                 </el-table-column>
                 <el-table-column prop="workOrderStatus" align="center" label="工单状态"
-                    :formatter="(row) => formatOption('workOrderStatus', row.workOrderStatus)" width="100">
+                    :formatter="(row) => $t($utils.getLabel(workOrderStatus, row.workOrderStatus))" width="100">
                 </el-table-column>
                 <el-table-column prop="reply" label="最后回复" align="left" width="200" max-height="100">
                 </el-table-column>
@@ -34,7 +34,7 @@
                     </template>
                 </el-table-column>
                 <el-table-column prop="createTime" label="创建时间" align="center" width="200"
-                    :formatter="(row) => formatTime(row.createTime)">
+                    :formatter="(row) => $utils.formatTime(row.createTime)">
                 </el-table-column>
                 <el-table-column fixed="right" label="操作" align="center" width="200">
                     <template slot-scope="scope">
@@ -59,7 +59,7 @@
                     </div>
                     <el-select v-model="eform.workOrderLevel" :disabled="page === 'detail'" :multiple="false"
                         placeholder="请选择" clearable>
-                        <el-option v-for="option in Constant.workOrderLevel" :key="option.value"
+                        <el-option v-for="option in workOrderLevel" :key="option.value"
                             :label="$t(option.i18) || option.label" :value="option.value" />
                     </el-select>
                 </el-form-item>
@@ -82,8 +82,7 @@
 <script>
 import SearchTable from '@/components/search-table'
 import { soptions, toptions } from './config'
-import { formatOption, formatTime } from '@/util/formatter'
-import Constant from '@/common/constant'
+import { workOrderLevel, workOrderStatus } from '@/common/constant'
 export default {
     name: "Ticket",
     components: {
@@ -91,6 +90,8 @@ export default {
     },
     data() {
         return {
+            workOrderLevel,
+            workOrderStatus,
             soptions,
             toptions,
             // 查询表单
@@ -133,12 +134,9 @@ export default {
                 edit: '编辑',
             },
             dialogVisible: false,
-            Constant
         }
     },
     methods: {
-        formatOption,
-        formatTime,
         // 查询
         async handleSearch(form) {
             const response = await this.$API.POST(this.url.list, form);

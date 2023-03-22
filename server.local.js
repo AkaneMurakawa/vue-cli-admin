@@ -120,14 +120,6 @@ app.post('/getTicket', (req, res) => {
     res.send(Result.success(response));
 })
 
-const server = app.listen(9000, err => {
-    if (!err) {
-        console.log('App running at:')
-        console.log(` - Local: http://localhost:${server.address().port}/`)
-        allkeysTTL();
-    }
-})
-
 /**
  * 随机token
  */
@@ -172,3 +164,11 @@ function allkeysTTL() {
         // -10000表示缓存处理时间
     }, interval - 10000);
 }
+
+const server = app.listen(9000, err => {
+    if (!err) {
+        console.log('App running at:')
+        console.log(` - Local: http://localhost:${server.address().port}/`)
+        allkeysTTL();
+    }
+})

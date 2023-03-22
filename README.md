@@ -23,28 +23,14 @@ npm run serve
 node server.local.js
 ```
 
-## Quick start
+## Docker build
 ```
-// 安装Node.js
-
-// 配置淘宝镜像
-npm config set registry https://registry.npm.taobao.org
-
-// 下载安装vue脚手架
-npm install -g @vue/cli
-
-// 创建脚手架，注意xxx目录会自动创建，不需要自己创建
-vue create xxx
-
-// 常用依赖
-npm install -S vuex@3 vue-router@3 axios vue-i18n@6
-npm install -S element-ui
-npm install -S connect-history-api-fallback typescript nprogress nanoid
-
-// 关闭eslint，配置vue.config.js文件
-lintOnSave: false
-
-// 配置代理服务器devServer，配置vue.config.js文件
+// 安装依赖
+npm install
+// 构建
+npm run build
+// 构建Docker image
+docker build -f Dockerfile -t demo:latest .
 ```
 
 ## Project setup

@@ -7,7 +7,8 @@ import router from './router'
 import store from './store'
 import Api from '@/http/api'
 import i18n from '@/i18'
-import response from '@/util/response'
+import response from '@/utils/response'
+import Utils from '@/utils'
 import {
     Message,
     MessageBox
@@ -40,6 +41,8 @@ loadJS(function () {
             Vue.prototype.$confirm = MessageBox.confirm;
             // response
             Vue.prototype.$response = response;
+            // utils
+            Vue.prototype.$utils = new Utils();
         }
     })
 });

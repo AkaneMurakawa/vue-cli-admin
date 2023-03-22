@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
-import List from "@/util/list";
+import {
+    findFirst
+} from "@/utils/list";
 import {
     auth
 } from '@/auth'
@@ -126,13 +128,13 @@ function toRedirectPath(to, from, next, redirect) {
  * 但是如果跳转后又会进入beforeEach，就无限循环了，因此还需要通过给to.meta设置标记
  */
 function dynamicAddRoute(to, from, next) {
-    let dynamicRoute = List.findFirst(store.state.menu.menu, 'name', to.name);
+    let dynamicRoute = findFirst(store.state.menu.menu, 'name', to.name);
     if (dynamicRoute) {
         let route = {
             ...dynamicRoute,
             // 动态加载组件
-            component: () => import(`@/${dynamicRoute.component}/index.vue`).catch(() => {
-                console.error(`动态加载组件${dynamicRoute.component}失败`);
+            component: () => import(`@/${dynamicRoute.component}/index.vue`).catch((e) => {
+                console.error(`动态加载组件${dynamicRoute.component}失败`, e);
             })
         };
         to.meta.addedRoute = true;

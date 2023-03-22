@@ -1,4 +1,7 @@
-import List from "@/util/list";
+import {
+    findFirst,
+    anyMatch
+} from "@/utils/list";
 
 export default {
     // 开启命名空间
@@ -12,7 +15,7 @@ export default {
         },
         // 设置激活的路由
         setActiveRouteKey(context, name) {
-            context.commit('PUSH_ROUTE', List.findFirst(context.state.menu, 'name', name));
+            context.commit('PUSH_ROUTE', findFirst(context.state.menu, 'name', name));
             context.commit('SET_ACTIVE_ROUTER_KEY', name);
         },
         removeHistoryRouteKey(context, name) {
@@ -34,7 +37,7 @@ export default {
         // 添加路由记录
         PUSH_ROUTE(state, route) {
             if (route) {
-                const hasRoute = List.anyMatch(state.routes, 'name', route.name);
+                const hasRoute = anyMatch(state.routes, 'name', route.name);
                 if (!hasRoute && route) {
                     state.routes.push(route)
                 }
@@ -43,8 +46,8 @@ export default {
         // 设置激活的路由名称
         SET_ACTIVE_ROUTER_KEY(state, name) {
             state.activeRouteKey = name;
-            const route = List.findFirst(state.routes, 'name', name);
-            const hasRoute = List.anyMatch(state.historyRoute, 'name', name);
+            const route = findFirst(state.routes, 'name', name);
+            const hasRoute = anyMatch(state.historyRoute, 'name', name);
             if (!hasRoute && route) {
                 state.historyRoute.push(route);
             }
