@@ -1,4 +1,6 @@
-import { getLanguage } from '@/i18'
+import {
+    getLanguage
+} from '@/i18'
 
 /**
  * 初始化国际化语言JS

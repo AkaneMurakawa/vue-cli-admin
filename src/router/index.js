@@ -1,43 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '@/store'
+import List from "@/util/list";
 import {
     auth
 } from '@/auth'
-import Home from '@/pages/home'
-import List from "@/util/list";
+import {
+    basicRoutes
+} from './routes'
 
 Vue.use(VueRouter);
-/**
- * 基础路由，非权限路由
- */
-const routes = [{
-        path: '*',
-        // 重定向
-        redirect: '/login',
-    },
-    {
-        name: 'home',
-        path: '/',
-        component: Home,
-    },
-    {
-        name: 'login',
-        path: '/login',
-        component: () => import('@/pages/login'),
-        meta: {
-            requiresAuth: false
-        }
-    },
-    {
-        name: 'register',
-        path: '/register',
-        component: () => import('@/pages/register'),
-        meta: {
-            requiresAuth: false
-        }
-    },
-];
 
 /**
  * 解决NavigationDuplicated
@@ -45,17 +17,26 @@ const routes = [{
 let originPush = VueRouter.prototype.push;
 let originReplace = VueRouter.prototype.replace;
 VueRouter.prototype.push = function (location, resolve, reject) {
-    originPush.call(this, location, resolve, reject).catch(() => {});
+    if (resolve && reject) {
+        originPush.call(this, location, resolve, reject);
+    } else {
+        originPush.call(this, location, () => {}, () => {});
+    }
 }
 VueRouter.prototype.replace = function (location, resolve, reject) {
-    originReplace.call(this, location, resolve, reject).catch(() => {});
+    if (resolve && reject) {
+        originReplace.call(this, location, resolve, reject);
+    } else {
+        originReplace.call(this, location, () => {}, () => {});
+    }
 }
+
 /**
  * 创建路由
  */
 const router = new VueRouter({
     mode: 'history',
-    routes
+    routes: basicRoutes
 });
 
 

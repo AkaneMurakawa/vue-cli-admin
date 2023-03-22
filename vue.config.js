@@ -9,6 +9,8 @@ module.exports = {
     // 代理服务器
     devServer: {
         historyApiFallback: true,
+        // 配置启动端口
+        port: process.env.VUE_APP_PORT,
         proxy: {
             // 路由前缀
             '/api': {

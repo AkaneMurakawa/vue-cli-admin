@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import SearchTable from '@/components/searchTable'
+import SearchTable from '@/components/search-table'
 import { soptions, toptions } from './config'
 import { formatOption, formatTime } from '@/util/formatter'
 import Constant from '@/common/constant'
@@ -176,7 +176,6 @@ export default {
         },
         // 重置弹出框
         handlerDialogCancel() {
-            debugger
             this.page = 'list';
             this.eform = {
                 subject: '',
@@ -186,15 +185,14 @@ export default {
         },
         // 弹出框保存
         handlerDialogSave(formName) {
-            debugger
             this.$refs[formName].validate((valid) => {
                 if (valid) {
                     setTimeout(() => {
                         this.$message.success(JSON.stringify(this.eform));
+                        // 重置弹出框
+                        this.handlerDialogCancel();
                     }, 500)
                     this.$message.success('保存成功');
-                    // 重置弹出框
-                    this.handlerDialogCancel();
                 } else {
                     return false;
                 }

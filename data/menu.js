@@ -18,7 +18,7 @@ module.exports = [{
                 id: '11',
                 name: 'subscribe',
                 path: '/sub/subscribe',
-                component: 'pages/home/sub/subscribe',
+                component: 'views/home/sub/subscribe',
                 redirect: null,
                 meta: {
                     keepAlive: true,
@@ -31,7 +31,7 @@ module.exports = [{
                 id: '12',
                 name: 'plan',
                 path: '/sub/plan',
-                component: 'pages/home/sub/plan',
+                component: 'views/home/sub/plan',
                 redirect: null,
                 meta: {
                     keepAlive: true,
@@ -57,7 +57,7 @@ module.exports = [{
                 id: '21',
                 name: 'profile',
                 path: '/user/profile',
-                component: 'pages/home/user/profile',
+                component: 'views/home/user/profile',
                 redirect: null,
                 meta: {
                     keepAlive: true,
@@ -70,7 +70,7 @@ module.exports = [{
                 id: '22',
                 name: 'ticket',
                 path: '/user/ticket',
-                component: 'pages/home/user/ticket',
+                component: 'views/home/user/ticket',
                 redirect: null,
                 meta: {
                     keepAlive: true,

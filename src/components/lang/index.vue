@@ -24,12 +24,12 @@ export default {
             }
         }
     },
-    methods:{
-        reloadLocale(){
+    methods: {
+        reloadLocale() {
             this.locale = getLocale();
         }
     },
-    mounted(){
+    mounted() {
         this.$bus.$on('reloadLocale', this.reloadLocale);
     }
 }

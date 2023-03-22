@@ -22,13 +22,13 @@
 
 <script>
 import './assets/css/native.css'
-import './assets/css/elementui.css'
+import './assets/css/element-ui.css'
 import './assets/css/app.css'
-import Header from "./components/header";
-import Aside from "./components/aside";
-import Tabs from "./components/tabs";
-import Footer from "./components/footer";
-import Backtop from "./components/backtop";
+import Header from "./layouts/header";
+import Aside from "./layouts/aside";
+import Tabs from "./layouts/tabs";
+import Footer from "./layouts/footer";
+import Backtop from "./layouts/backtop";
 import { setLanguage, setLocale } from "./i18";
 
 export default {

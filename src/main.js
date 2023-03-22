@@ -12,7 +12,7 @@ import {
     Message,
     MessageBox
 } from 'element-ui';
-import element from './element'
+import elementUI from './element-ui'
 
 Vue.config.productionTip = false
 

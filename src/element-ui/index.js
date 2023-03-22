@@ -50,8 +50,8 @@ import {
 // this.$confirm  ==>  MessageBox.confirm
 // this.$message  ==>  Message
 
-Vue.use(Menu)
 Vue.use(MenuItem)
+Vue.use(Menu)
 Vue.use(MenuItemGroup)
 Vue.use(Submenu)
 Vue.use(Container)
