@@ -17,20 +17,22 @@ Vue CLI快速启动，前端基本架构模型
 ```
 // 安装依赖
 npm install
-// 前端服务
+// 启动前端服务
 npm run serve
-// 后台服务
+// 启动后台服务
 node server.local.js
 ```
 
-## Docker build
+## Docker run
 ```
 // 安装依赖
 npm install
 // 构建
 npm run build
-// 构建Docker image
-docker build -f Dockerfile -t demo:latest .
+// 构建镜像
+docker build -f Dockerfile -t vue-cli-admin:latest .
+// 启动镜像
+docker run -d --name vue-cli-admin -p 80:80 vue-cli-admin
 ```
 
 ## Project setup
