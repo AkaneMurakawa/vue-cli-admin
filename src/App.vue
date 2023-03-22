@@ -29,7 +29,7 @@ import Aside from "./layouts/aside";
 import Tabs from "./layouts/tabs";
 import Footer from "./layouts/footer";
 import Backtop from "./layouts/backtop";
-import { setLanguage, setLocale } from "./i18";
+import { setLanguage, setLocale } from "@/plugin/i18";
 
 export default {
     name: "App",

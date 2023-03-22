@@ -6,14 +6,14 @@ import loadJS from './config/loadJS'
 import router from './router'
 import store from './store'
 import Api from '@/http/api'
-import i18n from '@/i18'
+import i18n from '@/plugin/i18'
 import response from '@/utils/response'
 import Utils from '@/utils'
 import {
     Message,
     MessageBox
 } from 'element-ui';
-import elementUI from './element-ui'
+import elementUI from '@/plugin/element-ui'
 
 Vue.config.productionTip = false
 

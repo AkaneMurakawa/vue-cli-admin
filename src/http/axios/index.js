@@ -3,7 +3,7 @@ import nProgress from "nprogress";
 import "nprogress/nprogress"
 import {
     getLanguage
-} from "@/i18";
+} from "@/plugin/i18";
 import {
     Message
 } from 'element-ui';

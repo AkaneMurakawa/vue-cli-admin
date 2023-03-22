@@ -1,6 +1,6 @@
 import {
     getLanguage
-} from '@/i18'
+} from '@/plugin/i18'
 
 /**
  * 初始化国际化语言JS

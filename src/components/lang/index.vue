@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { getLanguage, getLocale } from '@/i18';
+import { getLanguage, getLocale } from '@/plugin/i18';
 export default {
     name: 'Lang',
     data() {
