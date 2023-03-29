@@ -17,7 +17,7 @@ import {
 const requests = axios.create({
     // 跨域请求时发送Cookie
     withCredentials: true,
-    baseURL: window._CONFIG.baseURL,
+    baseURL: process.env.VUE_APP_DOMAIN_URL,
     timeout: 6000,
 });
 

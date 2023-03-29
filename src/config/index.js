@@ -3,10 +3,6 @@
  */
 (() => {
     window._CONFIG = {
-        baseUrl: '',
-        domain: '',
-        loginUrl: '',
         defaultLanguage: 'zhCn',
-        env: ''
     }
 })();
